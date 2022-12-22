@@ -15,8 +15,10 @@ public class CareService {
 
     @Autowired
     CareProvisionRepository cpr;
+    
     public List<Care> getAllCares(){
-        return null;
+        List<Care> cuidado = cpr.findAllCares();
+        return cuidado;
     }
     
     public List<Care> getAllCompatibleCares(PetType petTypeName, Care additionalCareName){
@@ -24,7 +26,9 @@ public class CareService {
     }
     
     public Care getCare(String careName) {
-        return null;
+        Care cuidado = cpr.findCareByName(careName);
+        return cuidado;
+       
     }
     
     public CareProvision save(CareProvision p) throws NonCompatibleCaresException, UnfeasibleCareException {        
@@ -32,7 +36,8 @@ public class CareService {
     }
 
     public List<CareProvision> getAllCaresProvided(){
-        return null;
+        List<CareProvision> res = cpr.findAll();
+        return res;
     }
 
     public List<CareProvision> getCaresProvidedInVisitById(Integer visitId){
